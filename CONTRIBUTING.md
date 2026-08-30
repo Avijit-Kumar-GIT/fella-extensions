@@ -102,8 +102,7 @@ Test it in Woody with `/packs add /path/to/my-pack`, then `/packs enable my-pack
 3. A maintainer reviews the content at that commit. The hashes lock it: a later
    change to the pack needs a new PR.
 
-## Code of conduct
+## Conduct
 
-This repo follows the same
-[Code of Conduct](https://github.com/Avijit-Kumar-GIT/woody-ai/blob/main/CODE_OF_CONDUCT.md)
-as the main project.
+Be decent, and assume good faith. Harassment or personal attacks get you removed
+from the project.
