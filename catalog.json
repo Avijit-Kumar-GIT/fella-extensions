@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "_comment": "The Woody app fetches this file. Each pack's file urls are pinned to a commit SHA and checked against its sha256 on install. To add a pack, open a PR appending an entry (see CONTRIBUTING.md).",
+  "packs": [
+    {
+      "id": "nord-theme",
+      "kind": "theme",
+      "name": "Nord",
+      "version": "1.0.0",
+      "description": "A cool, muted dark palette based on the Nord colour scheme.",
+      "author": "woody",
+      "source": "https://github.com/Avijit-Kumar-GIT/woody-extensions/tree/main/packs/nord-theme",
+      "files": [
+        {
+          "path": "woody-pack.json",
+          "url": "https://raw.githubusercontent.com/Avijit-Kumar-GIT/woody-extensions/c018d9f4f078c1468d044183bec14503e24dce18/packs/nord-theme/woody-pack.json",
+          "sha256": "8fe3cf93dd92b92853145f9cba20c1b343a6c859ca8a53b49099a629e5750e42"
+        },
+        {
+          "path": "theme.json",
+          "url": "https://raw.githubusercontent.com/Avijit-Kumar-GIT/woody-extensions/c018d9f4f078c1468d044183bec14503e24dce18/packs/nord-theme/theme.json",
+          "sha256": "230e31870eed806772a2fb3abf29012918f6884b21ebd25d16822eb1521bec27"
+        }
+      ]
+    },
+    {
+      "id": "personal-finance",
+      "kind": "skill",
+      "name": "Personal Finance",
+      "version": "1.0.0",
+      "description": "Vocabulary and conventions for bank and card statements.",
+      "author": "woody",
+      "source": "https://github.com/Avijit-Kumar-GIT/woody-extensions/tree/main/packs/personal-finance",
+      "files": [
+        {
+          "path": "woody-pack.json",
+          "url": "https://raw.githubusercontent.com/Avijit-Kumar-GIT/woody-extensions/c018d9f4f078c1468d044183bec14503e24dce18/packs/personal-finance/woody-pack.json",
+          "sha256": "9dbfda2a38200a803f8501f6be14927b294198f24a5eb670350c2ea98bc2dca9"
+        },
+        {
+          "path": "skill.md",
+          "url": "https://raw.githubusercontent.com/Avijit-Kumar-GIT/woody-extensions/c018d9f4f078c1468d044183bec14503e24dce18/packs/personal-finance/skill.md",
+          "sha256": "d6a8f2a1c59b36621c8e7021cfaa533662ef0be57c3478fb6c12039c541c517a"
+        }
+      ]
+    }
+  ]
+}
