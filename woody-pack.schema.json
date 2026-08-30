@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Avijit-Kumar-GIT/woody-extensions/woody-pack.schema.json",
+  "title": "woody-pack.json",
+  "description": "Manifest for a Woody pack. One pack, one kind, one payload file.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "id", "kind", "name", "version", "description", "payload"],
+  "properties": {
+    "schema": {
+      "const": 1,
+      "description": "Manifest schema version."
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$",
+      "maxLength": 64,
+      "description": "Unique, lowercase, kebab-case. Must be unique across the marketplace."
+    },
+    "kind": {
+      "enum": ["theme", "skill", "mcp"]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 60
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "description": "Semver x.y.z."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "author": { "type": "string", "maxLength": 100 },
+    "homepage": { "type": "string", "format": "uri" },
+    "license": { "type": "string", "maxLength": 40 },
+    "payload": {
+      "type": "string",
+      "description": "Relative path to the single payload file. No leading slash, no '..'.",
+      "pattern": "^[^/][^\\\\:]*$",
+      "not": { "pattern": "\\.\\." }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "kind": { "const": "theme" } } },
+      "then": { "properties": { "payload": { "pattern": "\\.json$" } } }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "skill" } } },
+      "then": { "properties": { "payload": { "pattern": "\\.md$" } } }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "mcp" } } },
+      "then": { "properties": { "payload": { "pattern": "\\.json$" } } }
+    }
+  ]
+}

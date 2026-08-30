@@ -1,0 +1,16 @@
+{
+  "appearance": "dark",
+  "--bg": "#2e3440",
+  "--bg-raised": "#2e3440",
+  "--bg-inset": "#3b4252",
+  "--border": "#3b4252",
+  "--border-strong": "#434c5e",
+  "--text": "#eceff4",
+  "--text-dim": "#c8d0de",
+  "--text-faint": "#7b88a1",
+  "--accent": "#88c0d0",
+  "--link": "#81a1c1",
+  "--ok": "#a3be8c",
+  "--warn": "#ebcb8b",
+  "--err": "#bf616a"
+}
