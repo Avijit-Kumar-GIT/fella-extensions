@@ -34,14 +34,19 @@ marketplace as **unverified**.
 
 ## Contributing a pack
 
-See [`CONTRIBUTING.md`](CONTRIBUTING.md). In short: build the pack as a
-directory with a `fella-pack.json` manifest, test it locally with
-`/packs add`, then open a PR adding an entry to [`catalog.json`](catalog.json).
+See [`CONTRIBUTING.md`](CONTRIBUTING.md). In short: add a directory under
+`packs/<id>/` with a `fella-pack.json` manifest, a `README.md`, a `LICENSE`, and
+the payload; test it locally with `/packs add`; run `node scripts/build-catalog.mjs`
+and commit the regenerated `catalog.json`; open a PR. **Don't hand-edit
+`catalog.json`** — CI rebuilds it and fails if yours is stale.
 
 ## Layout
 
 ```
-catalog.json              the index Fella reads
-fella-pack.schema.json    JSON Schema for fella-pack.json
+catalog.json              the index Fella reads (generated — do not hand-edit)
+catalog.schema.json       JSON Schema for catalog.json (CI)
+fella-pack.schema.json    JSON Schema for fella-pack.json (CI)
+scripts/build-catalog.mjs builds catalog.json from packs/  (--check for CI)
+scripts/md.mjs            the vendored Markdown → safe-HTML renderer it uses
 packs/<id>/               example / core-maintained packs
 ```

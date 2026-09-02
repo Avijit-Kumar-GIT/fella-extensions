@@ -1,0 +1,36 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # build-catalog.mjs reads git history for `published` / `updated`.
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Also fails on a pack with no README.md / LICENSE / payload, or an id
+      # that doesn't match its directory.
+      - name: catalog.json is a fresh build of packs/
+        run: node scripts/build-catalog.mjs --check
+
+      - name: fella-pack.json manifests validate (payload matches kind)
+        run: >
+          npx --yes ajv-cli@5 validate --spec=draft2020 --strict=false
+          -s fella-pack.schema.json
+          -d "packs/*/fella-pack.json"
+
+      - name: catalog.json validates
+        run: >
+          npx --yes ajv-cli@5 validate --spec=draft2020 --strict=false
+          -s catalog.schema.json
+          -d catalog.json

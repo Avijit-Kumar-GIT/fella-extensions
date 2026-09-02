@@ -4,14 +4,13 @@
 
 - **id:**
 - **kind:** theme / skill / mcp
-- **source:** (link to the pack's repo or folder)
 
 ## Checklist
 
-- [ ] `fella-pack.json` validates against `fella-pack.schema.json`
-- [ ] Tested locally with `/packs add`
-- [ ] `catalog.json` entry added, URLs pinned to a **commit SHA** (not a branch)
-- [ ] Every file in the entry has a correct `sha256`
+- [ ] `packs/<id>/` has `fella-pack.json`, `README.md`, `LICENSE`, and the payload
+- [ ] `id` matches the folder name
+- [ ] Ran `node scripts/build-catalog.mjs` and committed the updated `catalog.json`
+- [ ] Tested locally with `/packs add packs/<id>` then `/packs enable <id>`
 - [ ] theme: all colour tokens set, text stays readable
-- [ ] skill: instructions/vocabulary only, <= 16 KB, does not push fabricated numbers
-- [ ] mcp: server already exists and is reputable; credentials declared in `env`; non-read-only tools flagged
+- [ ] skill: instructions/vocabulary only, ≤ 16 KB, does not push fabricated numbers
+- [ ] mcp: server already exists and is reputable; credentials declared in `auth`; non-read-only tools flagged in this PR
