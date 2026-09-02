@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/Avijit-Kumar-GIT/woody-extensions/woody-pack.schema.json",
-  "title": "woody-pack.json",
-  "description": "Manifest for a Woody pack. One pack, one kind, one payload file.",
+  "$id": "https://github.com/Avijit-Kumar-GIT/fella-extensions/fella-pack.schema.json",
+  "title": "fella-pack.json",
+  "description": "Manifest for a Fella pack. One pack, one kind, one payload file.",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema", "id", "kind", "name", "version", "description", "payload"],

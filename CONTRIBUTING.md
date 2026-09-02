@@ -2,7 +2,7 @@
 
 A pack is a **theme**, a **skill**, or an **mcp** connector. If your idea is not
 one of those three, it is not a pack: open an issue on
-[`woody-ai`](https://github.com/Avijit-Kumar-GIT/woody-ai) instead. New file
+[`fella-ai`](https://github.com/Avijit-Kumar-GIT/fella-ai) instead. New file
 formats and new built-in tools are app changes, not packs.
 
 ## Build the pack
@@ -11,11 +11,11 @@ A pack is a directory:
 
 ```
 my-pack/
-  woody-pack.json      the manifest (schema: woody-pack.schema.json)
+  fella-pack.json      the manifest (schema: fella-pack.schema.json)
   <payload>            one file, named in the manifest
 ```
 
-`woody-pack.json`:
+`fella-pack.json`:
 
 ```json
 {
@@ -32,7 +32,7 @@ my-pack/
 }
 ```
 
-Test it in Woody with `/packs add /path/to/my-pack`, then `/packs enable my-pack`.
+Test it in Fella with `/packs add /path/to/my-pack`, then `/packs enable my-pack`.
 
 ## Per-kind rules
 
@@ -45,14 +45,14 @@ Test it in Woody with `/packs add /path/to/my-pack`, then `/packs enable my-pack
 - Define **all** colour tokens. Partial themes look broken.
 - Text must stay readable: aim for WCAG AA contrast of `--text` on `--bg` and of
   `--text-dim` on `--bg-inset`.
-- Optional top-level `"appearance": "light" | "dark"` so Woody can hint the OS.
+- Optional top-level `"appearance": "light" | "dark"` so Fella can hint the OS.
 
 ### skill
 - `payload` is a `.md` file, **16 KB max**.
 - Instructions and vocabulary only: what a column means, how the user's files
   are organised, terms to expand, caveats to always state. It may suggest
   questions.
-- It must not tell the model to state figures it did not compute. Woody's
+- It must not tell the model to state figures it did not compute. Fella's
   verification pass will reject fabricated numbers regardless, but don't try.
 - English. Plain language.
 
@@ -72,7 +72,7 @@ Test it in Woody with `/packs add /path/to/my-pack`, then `/packs enable my-pack
   token with `/connect <id>`; it is stored in `auth.json`, never in the pack.
 - The server must already exist and be reputable (an official one from the data
   source, ideally). This repo does not host server code.
-- Woody offers a tool the server marks `readOnlyHint: true` normally, flags one
+- Fella offers a tool the server marks `readOnlyHint: true` normally, flags one
   with no annotation, and **withholds** one marked `readOnlyHint: false` or
   `destructiveHint: true`. Say in the PR which tools the server exposes and
   their annotations.
@@ -92,7 +92,7 @@ Test it in Woody with `/packs add /path/to/my-pack`, then `/packs enable my-pack
      "author": "your-handle",
      "source": "https://github.com/your-handle/my-pack",
      "files": [
-       { "path": "woody-pack.json", "url": "https://raw.githubusercontent.com/your-handle/my-pack/<commit-sha>/woody-pack.json", "sha256": "..." },
+       { "path": "fella-pack.json", "url": "https://raw.githubusercontent.com/your-handle/my-pack/<commit-sha>/fella-pack.json", "sha256": "..." },
        { "path": "skill.md",        "url": "https://raw.githubusercontent.com/your-handle/my-pack/<commit-sha>/skill.md",        "sha256": "..." }
      ]
    }

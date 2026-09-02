@@ -8,7 +8,7 @@
 
 ## Checklist
 
-- [ ] `woody-pack.json` validates against `woody-pack.schema.json`
+- [ ] `fella-pack.json` validates against `fella-pack.schema.json`
 - [ ] Tested locally with `/packs add`
 - [ ] `catalog.json` entry added, URLs pinned to a **commit SHA** (not a branch)
 - [ ] Every file in the entry has a correct `sha256`
