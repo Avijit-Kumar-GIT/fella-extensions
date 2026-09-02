@@ -5,8 +5,8 @@
   "name": "Nord",
   "version": "1.0.0",
   "description": "A cool, muted dark palette based on the Nord colour scheme.",
-  "author": "woody",
-  "homepage": "https://github.com/Avijit-Kumar-GIT/woody-extensions/tree/main/packs/nord-theme",
+  "author": "fella",
+  "homepage": "https://github.com/Avijit-Kumar-GIT/fella-extensions/tree/main/packs/nord-theme",
   "license": "MIT",
   "payload": "theme.json"
 }
