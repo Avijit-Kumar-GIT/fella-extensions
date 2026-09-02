@@ -12,8 +12,13 @@ A pack is a directory:
 ```
 my-pack/
   fella-pack.json      the manifest (schema: fella-pack.schema.json)
+  README.md            what it does, how to use it — rendered on the browse site
+  LICENSE              the pack's licence text
   <payload>            one file, named in the manifest
 ```
+
+`README.md` and `LICENSE` are required. The README is shown verbatim on the
+packs page (as sanitised HTML — no raw HTML, no scripts).
 
 `fella-pack.json`:
 
@@ -79,28 +84,26 @@ Test it in Fella with `/packs add /path/to/my-pack`, then `/packs enable my-pack
 
 ## Submit
 
-1. Host the pack (its own repo is fine; a folder under `packs/` in a PR here is
-   also fine for small ones).
-2. Open a PR adding an entry to [`catalog.json`](catalog.json):
-   ```json
-   {
-     "id": "my-pack",
-     "kind": "skill",
-     "name": "My Pack",
-     "version": "1.0.0",
-     "description": "One sentence.",
-     "author": "your-handle",
-     "source": "https://github.com/your-handle/my-pack",
-     "files": [
-       { "path": "fella-pack.json", "url": "https://raw.githubusercontent.com/your-handle/my-pack/<commit-sha>/fella-pack.json", "sha256": "..." },
-       { "path": "skill.md",        "url": "https://raw.githubusercontent.com/your-handle/my-pack/<commit-sha>/skill.md",        "sha256": "..." }
-     ]
-   }
+Add your pack as a folder under `packs/<id>/` (the id must match the folder
+name) and open a PR. `catalog.json` is **generated** — you don't hand-edit it.
+
+1. `git switch -c add-my-pack`, then create `packs/my-pack/` with the four files
+   above.
+2. Regenerate the catalog and commit it:
    ```
-   URLs **must** be pinned to a commit SHA, not a branch. Every file needs its
-   `sha256` (`sha256sum <file>`).
-3. A maintainer reviews the content at that commit. The hashes lock it: a later
-   change to the pack needs a new PR.
+   node scripts/build-catalog.mjs
+   git add packs/my-pack catalog.json
+   ```
+   The script computes every `sha256` and byte size, reads the first-commit and
+   last-touched dates from git, and renders `README.md` to HTML. CI re-runs it
+   with `--check` and fails if the committed `catalog.json` isn't a fresh build.
+3. Open the PR. A maintainer reviews the pack contents; the hashes in
+   `catalog.json` lock them, so a later change to the pack is another PR.
+
+All packs currently live in this repo under `packs/`, so their file URLs track
+`main` — content is still sha256-locked and a maintainer owns `main`. If we ever
+list a pack hosted in someone else's repo, its URLs must pin to a **commit SHA**
+(an outside repo can force-push); open an issue first.
 
 ## Conduct
 
