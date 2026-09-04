@@ -24,10 +24,12 @@ jobs:
         run: node scripts/build-catalog.mjs --check
 
       - name: fella-pack.json manifests validate (payload matches kind)
-        run: >
-          npx --yes ajv-cli@5 validate --spec=draft2020 --strict=false
-          -s fella-pack.schema.json
-          -d "packs/*/fella-pack.json"
+        run: |
+          shopt -s nullglob
+          m=(packs/*/fella-pack.json)
+          if [ ${#m[@]} -eq 0 ]; then echo "no packs yet skipping"; exit 0; fi
+          npx --yes ajv-cli@5 validate --spec=draft2020 --strict=false \
+            -s fella-pack.schema.json -d "packs/*/fella-pack.json"
 
       - name: catalog.json validates
         run: >
